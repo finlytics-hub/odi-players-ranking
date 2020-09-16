@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Cricket ODI Matches Prediction</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='./style.css') }}">
+</head>
+
+<body id="main_body" >
+	
+<img id="top" src="top.png" alt="">
+<div id="form_container">
+	
+<h1><a>Cricket ODI Players Rankings</a></h1>
+<form class="appnitro"  method="POST" action="{{ url_for('players')}}">
+	<div class="form_description">
+			<center><h2>Top ODI Players</h2></center>
+			<br>
+			<p>Select a country from the following drop-down for which you would like to see the list of top 100 players as per the latest ICC ODI Rankings:</p>
+	</div>						
+
+<div style=" text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;">
+<table width="100%" border="1" cellpadding="2" cellspacing="2" style="background-color: #ffffff;">
+<tr valign="top">
+<td style="border-width : 0px;"><br />
+ 		<li id="li_2" >
+		<label class="description" for="element_2">Country </label>
+		<div>
+		<select class="element select large" id="element_2" name="element_2" required="required"> 
+				<option value="" selected="selected"></option>
+				<option value="AFG">Afghanistan</option>
+				<option value="AUS">Australia</option>
+				<option value="BAN">Bangladesh</option>
+				<option value="ENG">England</option>
+				<option value="IND">India</option>
+				<option value="IRE">Ireland</option>
+				<option value="NZ">New Zealand</option>
+				<option value="PAK">Pakistan</option>
+				<option value="SCO">Scotland</option>
+				<option value="SA">South Africa</option>
+				<option value="SL">Sri Lanka</option>
+				<option value="WI">West Indies</option>
+				<option value="ZIM">Zimbabwe</option>
+		</select>
+		</div>
+		</li>
+</td>
+</tr>
+</div>
+</table>
+		
+
+<li class="buttons">
+<button type="submit" class="button_text" style="margin:0 75%">Submit</button>
+</li>
+
+<br>
+
+<table style="border: 1px solid black; border-collapse: collapse;">
+    <tr style="border: 1px solid black; border-collapse: collapse;">
+        {% for col in bowling_column_names %}
+        <th style="border: 1px solid black; border-collapse: collapse;">{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in bowling_row_data %}
+    <tr style="border: 1px solid black; border-collapse: collapse;">
+        {% for col, row_ in zip(bowling_column_names, row) %}
+		<td style="border: 1px solid black; border-collapse: collapse;">{{row_}}</td>
+        {% endfor %}
+    </tr>
+	{% endfor %}
+</table>
+
+<br><br>
+
+<table style="border: 1px solid black; border-collapse: collapse;">
+    <tr style="border: 1px solid black; border-collapse: collapse;">
+        {% for col in batting_column_names %}
+        <th style="border: 1px solid black; border-collapse: collapse;">{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in batting_row_data %}
+    <tr style="border: 1px solid black; border-collapse: collapse;">
+        {% for col, row_ in zip(batting_column_names, row) %}
+		<td style="border: 1px solid black; border-collapse: collapse;">{{row_}}</td>
+        {% endfor %}
+    </tr>
+	{% endfor %}
+</table>
+
+<div class="form_description">
+	<br>
+	Sources: <a href="http://www.relianceiccrankings.com/ranking/odi/batting/" target="_blank">ICC ODI Top 100 Batsmen</a>, <a href="http://www.relianceiccrankings.com/ranking/odi/bowling/" target="_blank">ICC ODI Top 100 Bowlers</a>
+	<br><br>
+	<p>Go back to the <strong><a href="https://bit.ly/predict-odi">ODI Predictor</a></strong></p>
+</div>	
+
+</form>	
+
+<br>
+<div id="footer">
+Powered by <a href="https://www.finlyticshub.com" target="_blank">Finlytics Hub</a>
+</div>
+
+</div>
+<img id="bottom" src="bottom.png" alt="">
+</body>
+</html>
