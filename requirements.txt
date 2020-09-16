@@ -1,0 +1,6 @@
+Flask==1.1.1
+pandas==1.0.5
+numpy==1.18.5
+requests
+BeautifulSoup
+gunicorn==19.9.0
